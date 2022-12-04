@@ -61,3 +61,6 @@
 
 - name: Update converge deployment
   import_playbook: osp_deployment.yaml
+
+- name: Enable fencing
+  import_playbook: osp_enable_fencing.yaml
