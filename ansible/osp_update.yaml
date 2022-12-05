@@ -10,7 +10,10 @@
   import_playbook: osp_register_overcloud_nodes.yaml
 
 - name: Disable fencing
-  import_playbook: osp_disable_fencing.yaml
+  import_playbook: osp_fencing.yaml
+  vars:
+    stonith_enabled_action: false
+  when: enable_fencing
 
 - name: Update Prepare config generate
   import_playbook: config_generator.yaml
@@ -63,4 +66,7 @@
   import_playbook: osp_deployment.yaml
 
 - name: Enable fencing
-  import_playbook: osp_enable_fencing.yaml
+  import_playbook: osp_fencing.yaml
+  vars:
+    stonith_enabled_action: true
+  when: enable_fencing
